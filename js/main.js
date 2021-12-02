@@ -19,12 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
         display(translation, message);
     });
 
+    textbox.addEventListener('change', (e) => {
+        const text = textbox.value;
+        const translation = translate(text);
+        display(translation, message);
+    });
+
 });
 
-const translate = (text) => {
-    // översätt texten till rövarspråket
-    console.log(text)
-    return text;
+const translate = (s1) => {
+    var kons = "bcdfghjklmnqprstvxzBCDFGHJKLMNQPRSTVXZ";
+    var s2 = "";
+    for (var i = 0; i < s1.length; i++) {
+        var c = s1.charAt(i);
+        s2 = s2 + c;
+        if (kons.indexOf(c) >= 0) {
+            s2 = s2 + "o" + c;
+        }
+    }
+    console.log(s2);
+    return s2;
 };
 
 const display = (translation, element) => {
